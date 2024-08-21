@@ -4,9 +4,28 @@
 	<meta charset="UTF-8">
 	<title>Download</title>
 	<link rel="stylesheet" href="style.css">
+
+	<script>
+		function goBack(levels){
+			let currentURL = window.location.href;
+			let url = new URL(currentURL);
+			let pathParts = url.pathname.split('/');
+			pathParts = pathParts.filter(part => part !== '');
+			for (let i = 0; i < levels; i++) {
+				if (pathParts.length > 0){
+					pathParts.pop();
+				}
+			}
+			let newPath = '/' + pathParts.join('/');
+			window.location.href = newPath;
+		}
+	</script>
 </head>
 <body>
 	<a href="Chapter 1. The Living World.pdf" download>Download</a>
 	<p>Download "The Living World"</p>
+	<br>
+
+	<button onClick="goBack(6)">Go Back</a>
 </body>
 </html>
